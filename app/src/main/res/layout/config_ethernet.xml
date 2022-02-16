@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.numato.usbgenie.ui.DeviceViewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/background_menu_base"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/padding_xlarge"
+        android:paddingRight="@dimen/padding_default">
+
+        <TextView
+            style="@style/TitleLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numato Ethernet Devices"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="379dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/Products"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:entries="@array/ethernetproducts_arrays" />
+
+        <EditText
+            android:id="@+id/txtIPAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:editable="true"
+            android:hint="IPAddress (169.254.1.1)"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/txtportnumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:inputType="number"
+            android:editable="true"
+            android:hint="Port Number (23)"
+            android:text="23" />
+
+        <EditText
+            android:id="@+id/txtusername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:editable="true"
+            android:hint="User Name" />
+
+        <EditText
+            android:id="@+id/txtpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:editable="true"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#5fb563"
+            android:text="Connect"
+            android:textColor="@android:color/background_light" />
+
+    </LinearLayout>
+
+</LinearLayout>

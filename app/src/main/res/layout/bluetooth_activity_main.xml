@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context="com.numato.usbgenie.ui.BluetoothConfigActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/background_menu_base"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/padding_xlarge"
+        android:paddingRight="@dimen/padding_default">
+
+        <TextView
+            style="@style/TitleLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numato Bluetooth Devices" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/BluetoothProducts"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/lvNewDevices"
+            android:layout_alignStart="@+id/lvNewDevices"
+            android:entries="@array/bluetoothproducts_arrays" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnONOFF"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/BluetoothProducts"
+            android:layout_alignStart="@+id/BluetoothProducts"
+            android:background="#ec9c41"
+            android:text="ON/OFF"
+            android:textColor="@android:color/background_light" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnFindUnpairedDevices"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/lvNewDevices"
+            android:layout_alignParentTop="true"
+            android:background="#369bcf"
+            android:onClick="btnDiscover"
+            android:text="Discover"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/lvNewDevices"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnStartConnection"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/btnONOFF"
+            android:background="#38bd6a"
+            android:text="Connect"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/lvNewDevices"
+        android:layout_marginBottom="41dp"
+        android:hint="Enter Text Here"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/editText"
+        android:text="SEND"
+        android:visibility="gone" />
+
+
+</LinearLayout>
