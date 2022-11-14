@@ -61,7 +61,7 @@ public class NumatoUSBDevice {
     public static final int PID_USBSSR4 = 0x0C0C;
     public static final int PID_USBSSR8 = 0x0C0D;
 
-    private int versionid;
+    private String versionid;
     private String name;
     private int index;
     private int numberOfGpios;
@@ -237,6 +237,8 @@ public class NumatoUSBDevice {
         supportedDevices.add(NumatoUSBDevice.PID_USBRELAY2);
         supportedDevices.add(NumatoUSBDevice.PID_USBRELAY4);
         supportedDevices.add(NumatoUSBDevice.PID_USBRELAY8);
+        supportedDevices.add(NumatoUSBDevice.PID_USBRELAY16);
+        supportedDevices.add(NumatoUSBDevice.PID_USBRELAY32);
         supportedDevices.add(NumatoUSBDevice.PID_USBPOWEREDRELAY1);
         supportedDevices.add(NumatoUSBDevice.PID_USBPOWEREDRELAY2);
         supportedDevices.add(NumatoUSBDevice.PID_USBPOWEREDRELAY4);
@@ -292,12 +294,12 @@ public class NumatoUSBDevice {
         this.numberOfAnalogInputs = numberOfAnalogInputs;
     }
 
-    public int getVersionid()
+    public String getVersionid()
     {
         return  versionid;
     }
 
-    public void setVersionid(int versionid)
+    public void setVersionid(String versionid)
     {
         this.versionid = versionid;
     }
@@ -328,8 +330,6 @@ public class NumatoUSBDevice {
         }
 
         try {
-            if(getVersionid() > 8)
-                numBytesReceived = driver.read(ReceiveBuffer, 32);
             numBytesReceived = driver.read(ReceiveBuffer, 32);
         }catch(IOException ex){
             Log.d("Numato", ex.getMessage());
@@ -387,27 +387,32 @@ public class NumatoUSBDevice {
         System.out.println(responseData);
         String version = responseData;
 
-        Pattern rx = (Pattern.compile("\r([0-9]*)"));
+        //Pattern rx = (Pattern.compile("\r([0-9]*)"));
         if (responseData != null) {
             responseData = responseData.trim();
         } else {
             responseData = "";
         }
-        Matcher m = rx.matcher(responseData);
+        //Matcher m = rx.matcher(responseData);
 
-        if (m.find()) {
-            responseData = m.group(0).trim();
-        }
+        //if (m.find()) {
+        //    responseData = m.group(0).trim();
+        //}
+        responseData = ((((responseData.replaceAll("ver","")).replaceAll(">", "")).replaceAll("\n","")).replaceAll("\r",""));
         if (responseData.isEmpty()) {
-            version = version.replaceAll(">", "");
-            rx = (Pattern.compile("([0-9]*)"));
-            m = rx.matcher(version.trim());
+            version = ((((version.replaceAll("ver","")).replaceAll(">", "")).replaceAll("\n","")).replaceAll("\r",""));
+            //rx = (Pattern.compile("([0-9]*)"));
+            //m = rx.matcher(version.trim());
 
-            if (m.find()) {
-                responseData = m.group(0).trim();
-            }
+            //if (m.find()) {
+                responseData = version.trim();
+            //}
         }
-        setVersionid(Integer.parseInt(responseData));
+
+        setVersionid(responseData);
+
+
+
         return new String(responseData);
 
     }

@@ -336,9 +336,10 @@ public class DeviceViewActivity extends BaseActivity {
 
     public boolean getDeviceInfo() {
 
+
         //Firmware on Info page
         String firmwareVersionCompare = mDevicesManager.get(mCurrentDeviceIndex).getFirmwareVersion();
-        int ver = mDevicesManager.get(mCurrentDeviceIndex).getVersionid();
+        String ver = mDevicesManager.get(mCurrentDeviceIndex).getVersionid();
 
         String firmwareVersion = mDevicesManager.get(mCurrentDeviceIndex).getFirmwareVersion();
         if (firmwareVersion == null) {
